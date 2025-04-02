@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace TLabsCo\ArrayMacros\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class ArrayMacrosCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-array-macros';
 
     public $description = 'My command';
 
