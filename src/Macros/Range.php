@@ -20,20 +20,24 @@
  * file that was distributed with this source code.
  */
 
-namespace TLabsCo\ArrayMacros\Commands;
+namespace TLabsCo\ArrayMacros\Macros;
 
-use Illuminate\Console\Command;
-
-class ArrayMacrosCommand extends Command
+/**
+ *  Returns array, a sequence of [$start, $end]
+ */
+final class Range
 {
-    public $signature = 'laravel-array-macros';
-
-    public $description = 'My command';
-
-    public function handle(): int
+    public function __invoke()
     {
-        $this->comment('All done');
+        /**
+         *  Returns array, a sequence of [$start, $end]
+         */
+        return function (mixed $start, mixed $end, float|int $step = 1): array {
+            if ($start === $end) {
+                return [];
+            }
 
-        return self::SUCCESS;
+            return range($start, $end, $step);
+        };
     }
 }

@@ -20,20 +20,22 @@
  * file that was distributed with this source code.
  */
 
-namespace TLabsCo\ArrayMacros\Commands;
+namespace TLabsCo\ArrayMacros\Macros;
 
-use Illuminate\Console\Command;
-
-class ArrayMacrosCommand extends Command
+final class IfOk
 {
-    public $signature = 'laravel-array-macros';
-
-    public $description = 'My command';
-
-    public function handle(): int
+    public function __invoke()
     {
-        $this->comment('All done');
+        return function (array $array, mixed $if, mixed $then = null, mixed $else = null): mixed {
+            if (empty($array)) {
+                return $array;
+            }
 
-        return self::SUCCESS;
+            if (value($if, $array)) {
+                return $then ? value($then, $array) : $array;
+            }
+
+            return $else ? value($else, $array) : null;
+        };
     }
 }

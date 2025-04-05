@@ -20,20 +20,16 @@
  * file that was distributed with this source code.
  */
 
-namespace TLabsCo\ArrayMacros\Commands;
+namespace TLabsCo\ArrayMacros\Macros;
 
-use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 
-class ArrayMacrosCommand extends Command
+final class HasAnyValues
 {
-    public $signature = 'laravel-array-macros';
-
-    public $description = 'My command';
-
-    public function handle(): int
+    public function __invoke()
     {
-        $this->comment('All done');
-
-        return self::SUCCESS;
+        return function (array $array, array $values): bool {
+            return ! empty(array_intersect($values, Arr::dot($array)));
+        };
     }
 }

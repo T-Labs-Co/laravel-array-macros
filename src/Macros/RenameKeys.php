@@ -20,20 +20,26 @@
  * file that was distributed with this source code.
  */
 
-namespace TLabsCo\ArrayMacros\Commands;
+namespace TLabsCo\ArrayMacros\Macros;
 
-use Illuminate\Console\Command;
-
-class ArrayMacrosCommand extends Command
+final class RenameKeys
 {
-    public $signature = 'laravel-array-macros';
-
-    public $description = 'My command';
-
-    public function handle(): int
+    public function __invoke()
     {
-        $this->comment('All done');
+        return function (array $array, array $keys): array {
 
-        return self::SUCCESS;
+            $updatedArray = [];
+
+            foreach ($array as $k => $v) {
+                if (array_key_exists($k, $keys)) {
+                    $updatedArray[$keys[$k]] = $v;
+                } else {
+                    $updatedArray[$k] = $v;
+                }
+            }
+
+            return $updatedArray;
+
+        };
     }
 }

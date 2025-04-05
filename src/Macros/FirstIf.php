@@ -20,20 +20,24 @@
  * file that was distributed with this source code.
  */
 
-namespace TLabsCo\ArrayMacros\Commands;
+namespace TLabsCo\ArrayMacros\Macros;
 
-use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 
-class ArrayMacrosCommand extends Command
+final class FirstIf
 {
-    public $signature = 'laravel-array-macros';
-
-    public $description = 'My command';
-
-    public function handle(): int
+    public function __invoke()
     {
-        $this->comment('All done');
+        return function (array $array, mixed $if, mixed $else = null): mixed {
+            if (value($if, $array)) {
+                return Arr::first($array);
+            }
 
-        return self::SUCCESS;
+            if (value($else, $array)) {
+                return Arr::first($array);
+            }
+
+            return null;
+        };
     }
 }

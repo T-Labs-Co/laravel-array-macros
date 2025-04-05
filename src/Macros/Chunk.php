@@ -20,20 +20,20 @@
  * file that was distributed with this source code.
  */
 
-namespace TLabsCo\ArrayMacros\Commands;
+namespace TLabsCo\ArrayMacros\Macros;
 
-use Illuminate\Console\Command;
-
-class ArrayMacrosCommand extends Command
+/**
+ *  Returns array and chunked by input length number
+ */
+final class Chunk
 {
-    public $signature = 'laravel-array-macros';
-
-    public $description = 'My command';
-
-    public function handle(): int
+    public function __invoke()
     {
-        $this->comment('All done');
-
-        return self::SUCCESS;
+        /**
+         *  Returns array and chunked by input length number
+         */
+        return function (array $array, $length, $callback): array {
+            return array_map($callback, array_chunk($array, $length));
+        };
     }
 }

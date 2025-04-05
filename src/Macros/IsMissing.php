@@ -20,20 +20,25 @@
  * file that was distributed with this source code.
  */
 
-namespace TLabsCo\ArrayMacros\Commands;
+namespace TLabsCo\ArrayMacros\Macros;
 
-use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 
-class ArrayMacrosCommand extends Command
+/**
+ * Checks if keys are missing from the original array
+ */
+final class IsMissing
 {
-    public $signature = 'laravel-array-macros';
-
-    public $description = 'My command';
-
-    public function handle(): int
+    public function __invoke()
     {
-        $this->comment('All done');
+        /**
+         * Checks if keys are missing from the original array
+         */
+        return function (array $array, array|string $keys): bool {
+            $array = Arr::dot($array);
+            $missings = array_values(array_flip(array_diff_key(array_flip((array) $keys), $array)));
 
-        return self::SUCCESS;
+            return ! empty($missings);
+        };
     }
 }
