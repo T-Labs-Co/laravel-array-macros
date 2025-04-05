@@ -61,6 +61,7 @@ class ArrayMacrosServiceProvider extends PackageServiceProvider
             'if' => \TLabsCo\ArrayMacros\Macros\IfOk::class,
             'isMissing' => \TLabsCo\ArrayMacros\Macros\IsMissing::class,
             'isNumeric' => \TLabsCo\ArrayMacros\Macros\IsNumeric::class,
+            'lastIf' => \TLabsCo\ArrayMacros\Macros\LastIf::class,
             'missing' => \TLabsCo\ArrayMacros\Macros\Missing::class,
             'odd' => \TLabsCo\ArrayMacros\Macros\Odd::class,
             'range' => \TLabsCo\ArrayMacros\Macros\Range::class,

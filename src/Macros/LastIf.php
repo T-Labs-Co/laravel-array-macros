@@ -24,7 +24,7 @@ namespace TLabsCo\ArrayMacros\Macros;
 
 use Illuminate\Support\Arr;
 
-final class FirstIf
+final class LastIf
 {
     public function __invoke()
     {
@@ -34,11 +34,11 @@ final class FirstIf
             }
 
             if (value($if, $array)) {
-                return Arr::first($array);
+                return Arr::last($array);
             }
 
             if (value($else, $array)) {
-                return Arr::first($array);
+                return Arr::last($array);
             }
 
             return null;
