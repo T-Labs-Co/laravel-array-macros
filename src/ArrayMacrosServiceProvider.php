@@ -53,13 +53,16 @@ class ArrayMacrosServiceProvider extends PackageServiceProvider
     {
         return [
             'chunk' => \TLabsCo\ArrayMacros\Macros\Chunk::class,
+            'even' => \TLabsCo\ArrayMacros\Macros\Even::class,
             'firstIf' => \TLabsCo\ArrayMacros\Macros\FirstIf::class,
             'getAnyValues' => \TLabsCo\ArrayMacros\Macros\GetAnyValues::class,
             'hasAllValues' => \TLabsCo\ArrayMacros\Macros\HasAllValues::class,
             'hasAnyValues' => \TLabsCo\ArrayMacros\Macros\HasAnyValues::class,
             'if' => \TLabsCo\ArrayMacros\Macros\IfOk::class,
             'isMissing' => \TLabsCo\ArrayMacros\Macros\IsMissing::class,
+            'isNumeric' => \TLabsCo\ArrayMacros\Macros\IsNumeric::class,
             'missing' => \TLabsCo\ArrayMacros\Macros\Missing::class,
+            'odd' => \TLabsCo\ArrayMacros\Macros\Odd::class,
             'range' => \TLabsCo\ArrayMacros\Macros\Range::class,
             'renameKeys' => \TLabsCo\ArrayMacros\Macros\RenameKeys::class,
             'swap' => \TLabsCo\ArrayMacros\Macros\Swap::class,
