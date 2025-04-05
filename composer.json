@@ -1,6 +1,7 @@
 {
     "name": "t-labs-co/laravel-array-macros",
-    "description": "Array Macros Collection",
+    "description": "Laravel Array Macros",
+    "version": "1.0.0",
     "keywords": [
         "T.Labs Co.",
         "laravel",
